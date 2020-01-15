@@ -183,11 +183,3 @@ Java 的内存模型主要就是研究一个变量的值是怎么在主内存、
 其实 Java 的内存模型就是围绕着在并发的过程中如何处理 [原子性](https://github.com/TangBean/Java-Concurrency-in-Practice/blob/master/Ch0-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/00-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.md#%E5%8E%9F%E5%AD%90%E6%80%A7)、[可见性](https://github.com/TangBean/Java-Concurrency-in-Practice/blob/master/Ch0-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/00-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.md#%E5%8F%AF%E8%A7%81%E6%80%A7)、[有序性](https://github.com/TangBean/Java-Concurrency-in-Practice/blob/master/Ch0-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/00-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.md#%E6%9C%89%E5%BA%8F%E6%80%A7) 这 3 个特征建立的。同时 Java 除了可以依靠 volatile 和 synchronized 来保证有序性外，它自己本身还有一个 [Happens-Before 原则](https://github.com/TangBean/Java-Concurrency-in-Practice/blob/master/Ch0-Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/00-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.md#happens-before-%E8%A7%84%E5%88%99)，依靠这个原则，我们就可以判断并发环境下的两个操作是否可能存在冲突了。
 
 
-
-## 项目推荐
-
-对 JVM 相关知识的考查几乎成为 Java 面试的必备科目了，但是，就在简历上写个对 Java 虚拟机有一定了解，那极有可能被问到知识盲区呀！所以最好能在简历上就清晰明白的告诉人家我们都会啥，正如忘了在哪里看到的一个很有道理的话所言：简历就是我们准备面试的复习大纲。此时，倘若在简历上有那么一个项目可以用上 JVM 的相关的知识，那么在面试的时候，我们就可以基于这个项目开始我们的表演啦。
-
-不过老实讲，Java 虚拟机相关的知识还真的不太好用在项目中，或者说不太好在项目中体现出来。这个问题我也想了好久，最后终于在看《深入理解 Java 虚拟机》第 9 章中的实战：自己动手实现远程执行功能时找到了答案，个人认为该实战中用到的通过修改字节码来替换 Java 代码中对于 System 类中方法的调用的技术酷极了！可是如果只是写这么一个小模块作为一个项目写在简历上又太小了点，所以，在有一天刷 LeetCode 时，突然灵光一闪，想到可以基于这个实战做一个在线 Java IDE，就有了这个项目：[基于 SpringBoot 的在线 Java IDE](https://github.com/TangBean/OnlineExecutor) 。
-
-该项目基于 SpringBoot 实现了一个在线的 Java IDE，可以远程运行客户端发来的 Java 代码的 main 方法，并将程序的标准输出内容、运行时异常信息反馈给客户端，并且会对客户端发来的程序的执行时间进行限制。涉及了 Java 类文件的结构，Java 类加载器和 Java 类的热替换等 JVM 相关的技术，十分适合作为《深入理解 Java 虚拟机》这本书的一个实战内容，用来加深对该书内容的理解。
